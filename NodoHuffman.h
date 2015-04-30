@@ -9,23 +9,23 @@ class NodoHuffman
 {
 public:
     unsigned long long int frecuencia;
-    char caracter;
+    unsigned char caracter;
     NodoHuffman*  der;
     NodoHuffman*  izq;
 
     NodoHuffman();
     ~NodoHuffman();
-    NodoHuffman(unsigned long long int f,char d);
+    NodoHuffman(unsigned long long int f,unsigned char d);
     NodoHuffman* crearPadre(NodoHuffman* nIzq, NodoHuffman* nDer);
     void setFrecuencia(unsigned long long int );
     unsigned long long int getFrecuencia();
-    void setCaracter(char );
-    char getCaracter();
+    void setCaracter(unsigned char );
+    unsigned char getCaracter();
     NodoHuffman* getDerecha();
     NodoHuffman* getIzquierda();
     void setDerecha(NodoHuffman* nderecha);
     void setIzquierda(NodoHuffman* nizquierda);
-    string buscar(char n);
+    string buscar(unsigned char n);
 };
 
 #include "NodoHuffman.hxx"

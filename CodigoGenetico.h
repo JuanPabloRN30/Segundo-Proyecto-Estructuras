@@ -26,6 +26,7 @@ class CompareNode
 };
 
 
+
 class CodigoGenetico {
   public:
     CodigoGenetico();
@@ -38,7 +39,7 @@ class CodigoGenetico {
     void mostrarHistograma(string);
     bool guardarDatos(string);
     int subCadenas(string , bool );
-
+    ArbolHuffman* generarArbol();
   protected:
     vector < Cadena > listaCadenas;
     map < char , int > basesTotales;

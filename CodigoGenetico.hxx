@@ -42,7 +42,7 @@ bool CodigoGenetico::cargarDatos(string nombreArchivo)
         for(int j = 0 ; j < cadTot.size(); j++)
         {
             mapa[cadTot[j]]++;
-	    basesTotales[cadTot[j]]++;
+            basesTotales[cadTot[j]]++;
             if(cadTot[j] == '-')
             {
                 bandera = false;
@@ -61,6 +61,39 @@ bool CodigoGenetico::cargarDatos(string nombreArchivo)
 int CodigoGenetico::contarSecuencias()
 {
     return listaCadenas.size();
+}
+
+ArbolHuffman* CodigoGenetico::generarArbol()
+{
+    priority_queue<NodoHuffman*, vector<NodoHuffman*>, CompareNode > pq;
+    map<char,int >::iterator it;
+    for(it = basesTotales.begin() ; it != basesTotales.end() ; it++)
+    {
+        pq.push(new NodoHuffman(it->second,it->first));
+    }
+    if(pq.size() != 1)
+    {
+        while(pq.size() != 2)
+        {
+            NodoHuffman* padre;
+            padre->izq = pq.top();
+            pq.pop();
+            padre->der = pq.top();
+            pq.pop();
+            pq.push(padre);
+        }
+        NodoHuffman* padre;
+        padre->izq = pq.top();
+        pq.pop();
+        padre->der = pq.top();
+        pq.pop();
+        ArbolHuffman* arbol = new ArbolHuffman(padre);
+        return arbol;
+    }
+    else
+    {
+        return NULL;
+    }
 }
 
 void CodigoGenetico::listaSecuencias()

@@ -11,7 +11,7 @@ NodoHuffman::~NodoHuffman()
 
 }
 
-NodoHuffman::NodoHuffman(unsigned long long int f,char d)
+NodoHuffman::NodoHuffman(unsigned long long int f,unsigned char d)
 {
     frecuencia = f;
     caracter = d;
@@ -37,12 +37,12 @@ unsigned long long int NodoHuffman::getFrecuencia()
     return frecuencia;
 }
 
-void NodoHuffman::setCaracter(char c)
+void NodoHuffman::setCaracter(unsigned char c)
 {
     caracter = c;
 }
 
-char NodoHuffman::getCaracter()
+unsigned char NodoHuffman::getCaracter()
 {
     return caracter;
 }
@@ -70,7 +70,7 @@ void NodoHuffman::setIzquierda(NodoHuffman* nizquierda)
     izq = nizquierda;
 }
 
-string NodoHuffman::buscar(char c)
+string NodoHuffman::buscar(unsigned char c)
 {
 /*    if(c != '@')
     {
