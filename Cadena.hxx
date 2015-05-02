@@ -14,7 +14,7 @@ string Cadena::getTipo()
     return tipo;
 }
 
-string Cadena::getCadena()
+string& Cadena::getCadena()
 {
     return cadena;
 }

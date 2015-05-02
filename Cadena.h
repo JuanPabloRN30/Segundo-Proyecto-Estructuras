@@ -7,7 +7,7 @@ class Cadena {
 public:
     Cadena(string , string , long long, long long ,bool , map < char , int >);
     string getTipo();
-    string getCadena();
+    string &getCadena();
     long long getTam();
     long long getIdent();
     bool isComplete();

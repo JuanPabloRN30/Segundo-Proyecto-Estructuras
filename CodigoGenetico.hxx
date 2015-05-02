@@ -251,6 +251,7 @@ bool CodigoGenetico::encode(string fileName)
             salida.write(reinterpret_cast<char*> (&listaCadenas[i].getTipo()[j]),sizeof(unsigned char));
         }
     }
+
     long long cont = 0;
     string tot = "";
     vector < bool > already(totalBases,false);
@@ -261,7 +262,6 @@ bool CodigoGenetico::encode(string fileName)
         salida.write(reinterpret_cast<char*> (&tamSecuencia),sizeof(unsigned long long int));
         unsigned short int ident = listaCadenas[i].getIdent();
         salida.write(reinterpret_cast<char*> (&ident),sizeof(unsigned short int));
-
         for(int j = 0 ; j < tamSecuencia ; j++)
         {
             if(listaCadenas[i].getCadena()[j] == '\n')
@@ -286,6 +286,7 @@ bool CodigoGenetico::encode(string fileName)
         int byteIndex = 0;
         c[byteIndex] = 0;
         long long rest = tot.size()%8;
+
         for(int i = 0  ; i < tot.size()-rest ; i++)
         {
             if(tot[i] == '1')
@@ -317,7 +318,7 @@ bool CodigoGenetico::encode(string fileName)
         }
         tot = "";
     }
-        return true;
+    return true;
 }
 
 
@@ -334,6 +335,7 @@ bool CodigoGenetico::decode(string fileName)
     entrada.read((char*) &totalBases, sizeof(unsigned short int));
     for(int i = 0 ; i < totalBases ; i++)
     {
+
         char caracter;
         unsigned long long int frecuencia;
         entrada.read((char*) &caracter, sizeof(char));
