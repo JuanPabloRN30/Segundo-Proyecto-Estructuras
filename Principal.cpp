@@ -153,7 +153,10 @@ int main()
                 mask();
             else if(opc2 == "save")
                 save();
-
+            else if(opc2 == "encode")
+                encode();
+            else if(opc2 == "decode")
+                decode();
         }
         else
         {

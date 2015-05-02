@@ -90,36 +90,5 @@ bool NodoHuffman::IsLeaf( )
     return (izq == NULL && der == NULL);
 }
 
-string NodoHuffman::PrintAsPNG( ) const
-{
-  stringstream str;
-  if( this->izq != NULL )
-  {
-    str
-      << ( unsigned long )( this ) << "->"
-      << ( unsigned long )( this->izq ) << " "
-      << ( unsigned long )( this )
-      << " [label=" << this->caracter << "]; "
-      << ( unsigned long )( this->izq )
-      << " [label=" << this->izq->caracter << this->frecuencia << "]; "
-      << this->izq->PrintAsPNG( );
-
-  } // fi
-
-  if( this->der != NULL )
-  {
-    str
-      << ( unsigned long )( this ) << "->"
-      << ( unsigned long )( this->der ) << " "
-      << ( unsigned long )( this )
-      << " [label=" << this->caracter << "]; "
-      << ( unsigned long )( this->der )
-      << " [label=" << this->der->caracter << this->frecuencia << "]; "
-      << this->der->PrintAsPNG( );
-
-  }
-  return( str.str( ) );
-}
-
 #endif // NodoHuffman_HXX_INCLUDED
 

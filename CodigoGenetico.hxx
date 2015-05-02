@@ -66,7 +66,6 @@ bool CodigoGenetico::cargarDatos(string nombreArchivo)
         tipo = cadena;
     }
     tree = generarArbol();
-    tree->PrintAsPNG("HuffManTree.png");
     entrada.close();
     return true;
 }
@@ -220,6 +219,11 @@ bool CodigoGenetico::encode(string fileName)
     map < char , long long >::iterator it;
     ofstream salida;
     salida.open(fileName.c_str(),ios::binary|ios::out);
+    if(salida.fail())
+    {
+        salida.close();
+        return false;
+    }
     unsigned short int totalBases = (short unsigned int)basesTotales.size();
     salida.write(reinterpret_cast<char*> (&totalBases),sizeof(unsigned short int));
     long long consecutivo = 0;
@@ -273,7 +277,7 @@ bool CodigoGenetico::encode(string fileName)
                     string code = "";
                     codesOpt[actualId] = findCode(tree->raiz,listaCadenas[i].getCadena()[j],code);
                 }
-                    tot += codesOpt[actualId];
+                tot += codesOpt[actualId];
             }
         }
         long long tam = ceil((double)tot.size()/(double)8);
@@ -313,17 +317,7 @@ bool CodigoGenetico::encode(string fileName)
         }
         tot = "";
     }
-
-    if(salida.fail())
-    {
-        salida.close();
-        return false;
-    }
-    else
-    {
-        salida.close();
         return true;
-    }
 }
 
 
@@ -333,6 +327,8 @@ bool CodigoGenetico::decode(string fileName)
     vector < Cadena > listaAuxiliar;
     ifstream entrada;
     entrada.open(fileName.c_str(),ios::binary|ios::in);
+    if(entrada.fail())
+        return false;
     entrada.seekg(0,ios::beg);
     unsigned short int totalBases;
     entrada.read((char*) &totalBases, sizeof(unsigned short int));
@@ -345,7 +341,6 @@ bool CodigoGenetico::decode(string fileName)
         basesTotales[caracter] = frecuencia;
     }
     tree = generarArbol();
-    tree->PrintAsPNG("HuffManTree.png");
     map < string , char > decodes;
     for(it = basesTotales.begin() ; it != basesTotales.end() ; it++)
     {
@@ -368,7 +363,6 @@ bool CodigoGenetico::decode(string fileName)
             tipoCadena+= aux;
         }
         tipos[i] = tipoCadena;
-
     }
 
     long long cont = 0;
@@ -422,12 +416,6 @@ bool CodigoGenetico::decode(string fileName)
         Cadena cad(tipos[i].substr(1,tipos[i].size()-1),cadTot,tamSecuencia,ident,bandera,mapita);
         listaAuxiliar.push_back(cad);
     }
-
     listaCadenas = listaAuxiliar;
-
-
-    if(entrada.fail())
-        return false;
-    else
-        return true;
+    return true;
 }

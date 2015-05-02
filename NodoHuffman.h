@@ -12,7 +12,6 @@ public:
     unsigned char caracter;
     NodoHuffman*  der;
     NodoHuffman*  izq;
-
     NodoHuffman();
     ~NodoHuffman();
     NodoHuffman(unsigned long long int ,unsigned char);
@@ -26,7 +25,6 @@ public:
     void setDerecha(NodoHuffman*);
     void setIzquierda(NodoHuffman*);
     string buscar(unsigned char);
-    string PrintAsPNG( ) const;
     bool IsLeaf( );
 };
 
