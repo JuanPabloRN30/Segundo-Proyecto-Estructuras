@@ -1,5 +1,9 @@
 #include<iostream>
+#include<bitset>
+#include<math.h>
 #include<vector>
+#include<sstream>
+#include<stdlib.h>
 #include<map>
 #include<queue>
 #include<fstream>
@@ -19,7 +23,7 @@ CodigoGenetico cargar(string nombreArchivo)
             cout << 1 << " secuencia cargada cargada de: " << nombreArchivo << endl;
         else
             cout << diferencia << " secuencia cargada cargada de: " << nombreArchivo << endl;
-	return codigo;
+        return codigo;
     }
     else
         cout << "ERROR CON EL ARCHIVO " << endl;
@@ -98,6 +102,30 @@ void guardar(CodigoGenetico codigo, string nombreArchivo)
     }
 }
 
+void encode(CodigoGenetico &codigo, string fileName)
+{
+    if(codigo.encode(fileName))
+    {
+        cout << "Se guardaron las secuencias en: " << fileName << endl;
+    }
+    else
+    {
+        cout << "No se logro guardar las secuencias en: " << fileName << endl;
+    }
+}
+
+void decode(CodigoGenetico &codigo, string fileName)
+{
+    if(codigo.decode(fileName))
+    {
+        cout << "Se cargaron las secuencias de: " << fileName << endl;
+    }
+    else
+    {
+        cout << "No se logro cargar las secuencias de: " << fileName << endl;
+    }
+}
+
 int main()
 {
     CodigoGenetico codigo;
@@ -171,6 +199,20 @@ int main()
                 cin.ignore();
                 getline(cin,fileName);
                 guardar(codigo,fileName);
+            }
+            else if(comando == "encode")
+            {
+                string fileName;
+                cin.ignore();
+                getline(cin,fileName);
+                encode(codigo,fileName);
+            }
+            else if(comando == "decode")
+            {
+                string fileName;
+                cin.ignore();
+                getline(cin,fileName);
+                decode(codigo,fileName);
             }
         }
     }

@@ -1,8 +1,10 @@
 // constructor
-Cadena::Cadena(string tipo1, string cadena1, bool ncomplete, map < char , int > nbases )
+Cadena::Cadena(string tipo1, string cadena1, long long ntam , long long nident ,bool ncomplete, map < char , int > nbases )
 {
     tipo = tipo1;
     cadena = cadena1;
+    tam = ntam;
+    ident = nident;
     complete = ncomplete;
     bases = nbases;
 }
@@ -15,6 +17,16 @@ string Cadena::getTipo()
 string Cadena::getCadena()
 {
     return cadena;
+}
+
+long long Cadena::getTam()
+{
+    return tam;
+}
+
+long long Cadena::getIdent()
+{
+    return ident;
 }
 
 bool Cadena::isComplete()

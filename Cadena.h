@@ -5,9 +5,11 @@ using namespace std;
 
 class Cadena {
 public:
-    Cadena(string , string , bool , map < char , int >);
+    Cadena(string , string , long long, long long ,bool , map < char , int >);
     string getTipo();
     string getCadena();
+    long long getTam();
+    long long getIdent();
     bool isComplete();
     map < char , int > getBases();
     void setTipo(string);
@@ -17,6 +19,8 @@ public:
 protected:
     string tipo;
     string cadena;
+    long long tam;
+    long long ident;
     bool complete;
     map < char , int > bases;
 };

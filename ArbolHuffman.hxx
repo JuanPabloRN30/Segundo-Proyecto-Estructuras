@@ -47,9 +47,9 @@ void ArbolHuffman::preOrden(NodoHuffman* inicio)
     }
     else
     {
- //       cout << inicio->getDato() << " ";
-        preOrden(inicio->getIzquierda());
-        preOrden(inicio->getDerecha());
+        cout << inicio->caracter << " ";
+        preOrden(inicio->izq);
+        preOrden(inicio->der);
     }
 }
 
@@ -68,18 +68,40 @@ void ArbolHuffman::posOrden(NodoHuffman* inicio)
 
 void ArbolHuffman::nivelOrden(NodoHuffman* inicio)
 {
-    queue< NodoHuffman* > cola;
-    cola.push(inicio);
-    while(!cola.empty())
+    queue< NodoHuffman* > currentLevel,nextLevel;
+    currentLevel.push(inicio);
+    while(!currentLevel.empty())
     {
-       // cout << cola.front()->getDato() << " ";
-        if(cola.front()->getIzquierda() != NULL)
-            cola.push(cola.front()->getIzquierda());
-        if(cola.front()->getDerecha() != NULL)
-            cola.push(cola.front()->getDerecha());
+	NodoHuffman* current = currentLevel.front();
+	cout << current->caracter << "\t\t";
+        currentLevel.pop();
+        if(current->getIzquierda() != NULL)
+            nextLevel.push(current->getIzquierda());
+        if(current->getDerecha() != NULL)
+            nextLevel.push(current->getDerecha());
+	if(currentLevel.empty())
+	{
+	   cout << endl;
+	   swap(currentLevel,nextLevel);
+	}
 
-        cola.pop();
     }
+}
+
+void ArbolHuffman::PrintAsPNG( const string& filename ) const
+{
+  stringstream str;
+  str << "echo \"digraph G{";
+  if( this->raiz != NULL )
+  {
+    if( this->raiz->IsLeaf( ) )
+      str << this->raiz->caracter << " ";
+    else
+      str << this->raiz->PrintAsPNG( );
+
+  }
+  str << "}\" | dot -Tpng > " << filename;
+  system( str.str( ).c_str( ) );
 }
 
 #endif // ARBOLBINARIO_HXX_INCLUDED

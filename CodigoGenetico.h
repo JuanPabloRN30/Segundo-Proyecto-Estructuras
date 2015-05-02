@@ -31,18 +31,22 @@ class CodigoGenetico {
   public:
     CodigoGenetico();
     vector < Cadena > getListaCadenas();
-    map < char , int > getBasesTotales();
+    map < char , long long > getBasesTotales();
     int contarSecuencias();
     bool cargarDatos(string);
     void listaSecuencias();
+    string findCode(NodoHuffman*, char, string);
     Cadena* buscarCadena(string);
     void mostrarHistograma(string);
     bool guardarDatos(string);
     int subCadenas(string , bool );
     ArbolHuffman* generarArbol();
+    bool encode( string );
+    bool decode( string );
   protected:
     vector < Cadena > listaCadenas;
-    map < char , int > basesTotales;
+    map < char , long long > basesTotales;
+    ArbolHuffman* tree;
 };
 
 #include "CodigoGenetico.hxx"

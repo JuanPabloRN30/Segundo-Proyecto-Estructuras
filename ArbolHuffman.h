@@ -16,6 +16,7 @@ public:
     void preOrden(NodoHuffman*);
     void posOrden(NodoHuffman*);
     void nivelOrden(NodoHuffman*);
+    void PrintAsPNG( const string& filename ) const;
 };
 
 #include "ArbolHuffman.hxx"

@@ -1,4 +1,3 @@
-
 void load()
 {
     cout << "Escriba el comando: load <filename>" << endl;
@@ -43,4 +42,18 @@ void save()
     cout << "Escriba el comando: save <filename>" << endl;
     cout << "Guarda en el archivo <filename> las secuencias cargadas en memoria." << endl;;
     cout << "Se debe tener en cuenta la justificacion (de lineas) del archivo inicial." << endl;
+}
+
+void encode()
+{
+    cout << "Escriba el comando encode <filename.fabin>" << endl;
+    cout << "El comando debe generar el archivo binario con la correspondiente codificacion de Huffman," << endl;
+    cout << "almacenandolo en disco bajo el nombre <filename.fabin>" << endl;
+}
+
+void decode()
+{
+    cout << "Escriba el comando decode <filename.fabin>" << endl;
+    cout << "El comando debe cargar en memoria las secuencias contenidas en el archivo binario <filename.fabin>," << endl;
+    cout << "que contiene una codificacion Huffman de un conjunto de secuencias." << endl;
 }

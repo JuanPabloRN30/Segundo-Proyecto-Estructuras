@@ -15,17 +15,19 @@ public:
 
     NodoHuffman();
     ~NodoHuffman();
-    NodoHuffman(unsigned long long int f,unsigned char d);
-    NodoHuffman* crearPadre(NodoHuffman* nIzq, NodoHuffman* nDer);
+    NodoHuffman(unsigned long long int ,unsigned char);
+    NodoHuffman(NodoHuffman*, NodoHuffman*);
     void setFrecuencia(unsigned long long int );
     unsigned long long int getFrecuencia();
     void setCaracter(unsigned char );
     unsigned char getCaracter();
     NodoHuffman* getDerecha();
     NodoHuffman* getIzquierda();
-    void setDerecha(NodoHuffman* nderecha);
-    void setIzquierda(NodoHuffman* nizquierda);
-    string buscar(unsigned char n);
+    void setDerecha(NodoHuffman*);
+    void setIzquierda(NodoHuffman*);
+    string buscar(unsigned char);
+    string PrintAsPNG( ) const;
+    bool IsLeaf( );
 };
 
 #include "NodoHuffman.hxx"
